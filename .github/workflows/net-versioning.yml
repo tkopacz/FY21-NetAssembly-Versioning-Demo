@@ -59,7 +59,7 @@ jobs:
         with:
           artifacts: "demo/bin/Debug/net6.0/*.*"
           body: 'test body'
-          tag: "rel1"
+          #tag: "rel1"
           token: ${{ secrets.GITHUB_TOKEN }}
       
           
