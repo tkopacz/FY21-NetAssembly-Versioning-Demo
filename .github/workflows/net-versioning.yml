@@ -54,5 +54,12 @@ jobs:
         run: |
           cd demo
           dotnet build
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifact: "demo/debug/*.*"
+          body: 'test body'
+          tag: "rel1"
+          token: ${{ secrets.GITHUB_TOKEN }}
       
           
