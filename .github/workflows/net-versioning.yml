@@ -49,5 +49,10 @@ jobs:
       - name: Checkout Files
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
         uses: actions/checkout@v2
+        
+      - name: Build solution
+        run: |
+          cd demo
+          dotnet build
       
           
