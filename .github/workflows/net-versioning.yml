@@ -7,11 +7,11 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     tags:
-    - '*'
+    - 'c-*'
     # branches: [ main ]
   pull_request:
     tags:
-    - '*'
+    - 'c-*'
     # branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -58,10 +58,18 @@ jobs:
         run: |
           cd demo
           dotnet build
-      - name: Release
+
+      - name: Zip release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: 'release.zip'
+          directory: 'demo/bin/Debug'
+
+      - name: Publis Release by tag
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "demo/bin/Debug/net6.0/*.*"
+          artifacts: "demo/bin/Debug/net6.0/release.zip"
           body: 'test body <b>bold</b>'
           # commit: 'main'
           # tag: "rel2"
