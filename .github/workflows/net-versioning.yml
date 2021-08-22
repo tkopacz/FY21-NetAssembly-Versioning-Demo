@@ -64,7 +64,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'release.zip'
-          directory: 'demo/bin/Debug'
+          directory: 'demo/bin/Debug/net6.0'
 
       - name: Publis Release by tag
         uses: ncipollo/release-action@v1
