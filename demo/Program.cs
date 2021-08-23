@@ -10,6 +10,7 @@ namespace demo
             Console.WriteLine("---Begin");
             Console.WriteLine($"Assembly: {myAsm.GetName().Name}, {myAsm.GetName().Version}");
             Console.WriteLine("-----------------------------------");
+            //dotnet tool install -g nbgv
             Console.WriteLine($"ThisAssembly.AssemblyVersion: {ThisAssembly.AssemblyVersion}");
             Console.WriteLine($"ThisAssembly.AssemblyFileVersion: {ThisAssembly.AssemblyFileVersion}");
             Console.WriteLine($"ThisAssembly.AssemblyInformationalVersion: {ThisAssembly.AssemblyInformationalVersion}");
@@ -35,10 +36,8 @@ namespace demo
                     Console.WriteLine($"   > {i2.MemberName}:{i2.TypedValue.Value}");
                 }
             }
-
-
-
             Console.WriteLine("End---");
+            Console.ReadLine();
         }
     }
 }
