@@ -52,8 +52,10 @@ jobs:
           
       - name: Checkout Files
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # for nbgv  - fetch-depth: 0
         uses: actions/checkout@v2
-        
+        with:
+          fetch-depth: 0        
       - name: Build solution
         run: |
           cd demo
