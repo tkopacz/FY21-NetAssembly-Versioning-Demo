@@ -58,6 +58,7 @@ jobs:
         run: |
           cd demo
           dotnet build
+          #dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
 
       - name: Zip release
         uses: thedoctor0/zip-release@master

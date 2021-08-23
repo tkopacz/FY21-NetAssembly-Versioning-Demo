@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 
 namespace demo
 {
@@ -8,41 +7,38 @@ namespace demo
         static void Main(string[] args)
         {
             var myAsm = typeof(Program).Assembly;
-
-            Console.WriteLine("Begin");
-            //Display(0,$"{myAsm}")
-            //System.Console.WriteLine(myAsm.FullName, myAsm.Version);
-            myAsm.CustomAttributes;
-            DisplayAttributes(.GetCustomAttribute());
-            Console.WriteLine("End");
-        }
-
-        public static void DisplayAttributes(Int32 indent, MemberInfo mi)
-        {
-            // Get the set of custom attributes; if none exist, just return.
-            object[] attrs = mi.GetCustomAttributes(false);
-            if (attrs.Length == 0) { return; }
-            DisplayAttributes(indent,attrs);
-        }
-
-        public static void DisplayAttributes(Int32 indent, object[] attrs)
-        {
-            // Get the set of custom attributes; if none exist, just return.
-            object[] attrs = mi.GetCustomAttributes(false);
-
-            // Display the custom attributes applied to this member.
-            Display(indent + 1, "Attributes:");
-            foreach (object o in attrs)
+            Console.WriteLine("---Begin");
+            Console.WriteLine($"Assembly: {myAsm.GetName().Name}, {myAsm.GetName().Version}");
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine($"ThisAssembly.AssemblyVersion: {ThisAssembly.AssemblyVersion}");
+            Console.WriteLine($"ThisAssembly.AssemblyFileVersion: {ThisAssembly.AssemblyFileVersion}");
+            Console.WriteLine($"ThisAssembly.AssemblyInformationalVersion: {ThisAssembly.AssemblyInformationalVersion}");
+            Console.WriteLine($"ThisAssembly.AssemblyName: {ThisAssembly.AssemblyName}");
+            //Console.WriteLine($"{ThisAssembly.PublicKey}");
+            //Console.WriteLine($"{ThisAssembly.PublicKeyToken}");
+            Console.WriteLine($"ThisAssembly.AssemblyTitle: {ThisAssembly.AssemblyTitle}");
+            Console.WriteLine($"ThisAssembly.AssemblyConfiguration: {ThisAssembly.AssemblyConfiguration}");
+            Console.WriteLine($"ThisAssembly.RootNamespace: {ThisAssembly.RootNamespace}");
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("Attributes:");
+            foreach (var item in myAsm.CustomAttributes)
             {
-                Display(indent + 2, "{0}", o.ToString());
+                Console.WriteLine($"{item.AttributeType.Name}");
+                if (item.ConstructorArguments.Count > 0) Console.WriteLine("  ConstructorArguments");
+                foreach (var i1 in item.ConstructorArguments)
+                {
+                    Console.WriteLine($"   > {i1.Value}");
+                }
+                if (item.NamedArguments.Count>0) Console.WriteLine("  NamedArguments");
+                foreach (var i2 in item.NamedArguments)
+                {
+                    Console.WriteLine($"   > {i2.MemberName}:{i2.TypedValue.Value}");
+                }
             }
-        }
-        // Display a formatted string indented by the specified amount.
-        public static void Display(Int32 indent, string format, params object[] param)
 
-        {
-            Console.Write(new string(' ', indent * 2));
-            Console.WriteLine(format, param);
+
+
+            Console.WriteLine("End---");
         }
     }
 }
