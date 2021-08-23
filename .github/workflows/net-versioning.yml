@@ -57,8 +57,9 @@ jobs:
       - name: Build solution
         run: |
           cd demo
+          dotnet tool install -g nbgv
           dotnet build
-          #dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false
+          dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true
 
       - name: Zip release
         uses: thedoctor0/zip-release@master
