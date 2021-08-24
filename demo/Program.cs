@@ -36,7 +36,7 @@ namespace demo
                     Console.WriteLine($"   > {i2.MemberName}:{i2.TypedValue.Value}");
                 }
             }
-            Console.WriteLine("End---");
+            Console.WriteLine("End---\r\nEnter\r\n");
             Console.ReadLine();
         }
     }
