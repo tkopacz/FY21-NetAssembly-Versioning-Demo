@@ -59,7 +59,7 @@ jobs:
       - name: Build solution
         run: |
           cd demo
-          dotnet tool install -g nbgv
+          # dotnet tool install -g nbgv
           dotnet build
           dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true
 
