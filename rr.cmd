@@ -1,0 +1,1 @@
+git remote set-url origin https://tkopacz@github.com/tkopacz/FY21-NetAssembly-Versioning-Demo.git
